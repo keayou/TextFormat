@@ -170,6 +170,7 @@
     [self.titleLabel sizeToFit];
     [self.contentLabel sizeToFit];
     
+    self.contentLabel.top = self.titleLabel.bottom + 20;
 }
 
 - (void)resetTitleFrame:(ZZFormatEditModel *)model {

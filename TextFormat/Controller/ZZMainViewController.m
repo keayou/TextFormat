@@ -13,7 +13,7 @@
 @interface ZZMainViewController ()
 @property (weak, nonatomic) IBOutlet UITextView *titleTxtView;
 @property (weak, nonatomic) IBOutlet UITextView *contentTxtView;
-@property (weak, nonatomic) IBOutlet UIButton *naviDoneBtn;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *nextBtn;
 
 @end
 
@@ -22,9 +22,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.naviDoneBtn addTarget:self action:@selector(naviDoneClick:) forControlEvents:UIControlEventTouchUpInside];
     
-    // Do any additional setup after loading the view.
+    self.nextBtn.target = self;
+    self.nextBtn.action = @selector(naviDoneClick:);
+    
 }
 
 - (void)didReceiveMemoryWarning {
