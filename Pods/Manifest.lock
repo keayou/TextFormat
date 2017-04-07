@@ -1,0 +1,15 @@
+PODS:
+  - iOS-Color-Picker (1.1.4)
+  - IQKeyboardManager (4.0.8)
+
+DEPENDENCIES:
+  - iOS-Color-Picker
+  - IQKeyboardManager
+
+SPEC CHECKSUMS:
+  iOS-Color-Picker: 0eebf395527785e1ff2180c35b69f6d369051555
+  IQKeyboardManager: 1a8189fa153bf09044355ee0ad36826f6767e7f7
+
+PODFILE CHECKSUM: 3c6a877e8cfe94a51a0e5a9281fc3d8f213517ce
+
+COCOAPODS: 1.2.0
