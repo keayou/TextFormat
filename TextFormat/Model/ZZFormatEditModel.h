@@ -20,4 +20,16 @@
 @property (nonatomic, assign) CGFloat lineMargin;
 
 
+@property (nonatomic, assign) CGFloat topMarginContent;
+@property (nonatomic, assign) CGFloat leftMarginContent;
+@property (nonatomic, assign) CGFloat bottomMarginContent;
+@property (nonatomic, assign) CGFloat rightMarginContent;
+@property (nonatomic, strong) UIColor *titleColorContent;
+@property (nonatomic, assign) CGFloat titleFontSizeContent;
+@property (nonatomic, assign) CGFloat lineMarginContent;
+
+@property (nonatomic, strong) UIColor *bgColor;
+
+
+
 @end

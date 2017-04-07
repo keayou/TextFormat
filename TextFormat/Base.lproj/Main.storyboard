@@ -143,14 +143,6 @@ Euronet首席执行官Michael Brown已经致信财政部长姆钦，表示蚂蚁
                         <rect key="frame" x="0.0" y="0.0" width="375" height="270"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="h10-Ve-MlL">
-                                <rect key="frame" x="146" y="8" width="84" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <segments>
-                                    <segment title="标题"/>
-                                    <segment title="内容"/>
-                                </segments>
-                            </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pa2-hS-zXU">
                                 <rect key="frame" x="328" y="8" width="31" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
@@ -163,11 +155,6 @@ Euronet首席执行官Michael Brown已经致信财政部长姆钦，表示蚂蚁
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bHz-yq-ft4">
                                 <rect key="frame" x="0.0" y="51" width="375" height="219"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ROJ-Px-AEH">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="219"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="1" green="0.61610132455610733" blue="0.74717961825436618" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                    </view>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l6S-0a-fiy">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="219"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
@@ -244,16 +231,134 @@ Euronet首席执行官Michael Brown已经致信财政部长姆钦，表示蚂蚁
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bj4-EX-Hro">
-                                                <rect key="frame" x="191" y="18" width="176" height="179"/>
+                                                <rect key="frame" x="191" y="20" width="176" height="179"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES"/>
                                                 <state key="normal" title="选择字体颜色"/>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.13634203350703944" green="0.69165330662471725" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ROJ-Px-AEH">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="219"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QZh-Pv-eB1">
+                                                <rect key="frame" x="191" y="20" width="176" height="179"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES"/>
+                                                <state key="normal" title="选择字体颜色"/>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="字大小：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QgJ-qs-we2">
+                                                <rect key="frame" x="8" y="156" width="70" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="行间距" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YrU-mY-Ocy">
+                                                <rect key="frame" x="86" y="190" width="97" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="左边缘" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MDS-8Y-r9Q">
+                                                <rect key="frame" x="86" y="0.0" width="97" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="字体大小" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bqc-qg-LWp">
+                                                <rect key="frame" x="86" y="151" width="97" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="右边缘：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="phD-f2-X2q">
+                                                <rect key="frame" x="8" y="118" width="70" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="左边缘：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mOx-sc-02B">
+                                                <rect key="frame" x="8" y="5" width="70" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="行间距：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L3G-rj-SMC">
+                                                <rect key="frame" x="8" y="194" width="70" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="右边缘" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="K8E-RG-OPx">
+                                                <rect key="frame" x="86" y="112" width="97" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" red="1" green="0.96487249959999999" blue="0.96051088809999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="上边缘" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MNX-ka-Koz">
+                                                <rect key="frame" x="86" y="38" width="97" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="上边缘：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5lY-ab-rix">
+                                                <rect key="frame" x="8" y="43" width="70" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="下边缘：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uCN-Rb-9V0">
+                                                <rect key="frame" x="8" y="81" width="70" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="下边缘" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tog-Hm-6aO">
+                                                <rect key="frame" x="86" y="76" width="97" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                        <color key="backgroundColor" red="1" green="0.61610132455610733" blue="0.74717961825436618" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7li-lb-q2I">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="219"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V2a-Vx-Qba">
+                                                <rect key="frame" x="97" y="48" width="180" height="123"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="选择背景颜色"/>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" red="1" green="0.88137989554464657" blue="0.39584469302385517" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.18646851162468092" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </scrollView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="h10-Ve-MlL">
+                                <rect key="frame" x="105" y="9" width="165" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="标题"/>
+                                    <segment title="内容"/>
+                                    <segment title="背景"/>
+                                </segments>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" red="0.92184946689349589" green="0.95862984852103317" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
@@ -265,12 +370,22 @@ Euronet首席执行官Michael Brown已经致信财政部长姆钦，表示蚂蚁
                     </view>
                     <connections>
                         <outlet property="attributeBackView" destination="ROJ-Px-AEH" id="XNx-Ru-fmU"/>
+                        <outlet property="backSetupView" destination="7li-lb-q2I" id="ja8-NR-N30"/>
+                        <outlet property="backgroundColorSelectBtn" destination="V2a-Vx-Qba" id="09z-0D-Q4H"/>
                         <outlet property="chooseTextColorBtn" destination="bj4-EX-Hro" id="bg6-FP-bsM"/>
+                        <outlet property="contentBottomTxtView" destination="Tog-Hm-6aO" id="PXU-Ub-lV3"/>
+                        <outlet property="contentChooseTextColorBtn" destination="QZh-Pv-eB1" id="jHR-l2-Sge"/>
                         <outlet property="contentEditScrollView" destination="Ome-41-fjN" id="zHG-T2-eaH"/>
+                        <outlet property="contentLineMarginTxtView" destination="YrU-mY-Ocy" id="coa-aL-h9O"/>
+                        <outlet property="contentRightTxtView" destination="K8E-RG-OPx" id="4jn-lL-Cl5"/>
+                        <outlet property="contentTextFontSizeTxtView" destination="bqc-qg-LWp" id="Yz5-jm-PBl"/>
+                        <outlet property="contentTopMarginTxtView" destination="MNX-ka-Koz" id="Gbf-Cp-G6k"/>
+                        <outlet property="contentleftMarginTxtView" destination="MDS-8Y-r9Q" id="jzd-xd-aX5"/>
                         <outlet property="editSureBtn" destination="pa2-hS-zXU" id="xoA-Oe-II3"/>
                         <outlet property="leftMarginTxtView" destination="h7r-WC-mjA" id="rbk-M1-Yyh"/>
                         <outlet property="lineMarginTxtView" destination="F9U-sc-PBu" id="wco-Qz-Orl"/>
                         <outlet property="rightMarginTxtView" destination="AsL-27-l0d" id="Jes-Le-ek5"/>
+                        <outlet property="segControl" destination="h10-Ve-MlL" id="nEN-q4-zKA"/>
                         <outlet property="textFontSizeTxtView" destination="uHg-OB-69C" id="zQA-58-LNU"/>
                         <outlet property="titleEdgeBackView" destination="l6S-0a-fiy" id="FWq-GO-3Ug"/>
                         <outlet property="titleEditScrollView" destination="bHz-yq-ft4" id="wdW-M3-Uje"/>

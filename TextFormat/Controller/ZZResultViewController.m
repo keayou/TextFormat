@@ -52,18 +52,17 @@
     self.editBtnNavigationBar.action = @selector(showEditView:);
     
     
-    [self.titleSlider addTarget:self action:@selector(titleSliderAction:) forControlEvents:UIControlEventValueChanged];
+//    [self.titleSlider addTarget:self action:@selector(titleSliderAction:) forControlEvents:UIControlEventValueChanged];
     
 
     self.titleLabel.text = _titleStr;
-    [self titleSliderAction:nil];
+//    [self titleSliderAction:nil];
 
     
     self.contentLabel.text = _contentStr;
-//    [self.titleLabel sizeToFit];
     
     
-
+    [self setupTitleContentFrame];
 }
 
 
@@ -80,7 +79,13 @@
         _formatEditVC = [segue destinationViewController];
         _formatEditVC.editCompletedBlock = ^(ZZFormatEditModel *editModel) {
             
+            weakSelf.curEditModel = editModel;
+            
+            weakSelf.view.backgroundColor = editModel.bgColor;
+
             [weakSelf resetTitleFrame:editModel];
+            [weakSelf resetContentFrame:editModel];
+
             [weakSelf editCompleteClick:nil];
         };
     }
@@ -97,16 +102,25 @@
         _curEditModel.leftMargin = self.titleLabel.left;
         _curEditModel.rightMargin = self.view.width - self.titleLabel.right;
         
-        
         _curEditModel.titleColor = self.titleLabel.textColor;
-        
         _curEditModel.titleFontSize = self.titleLabel.font.pointSize;
         
-//        _curEditModel.lineMargin = self.titleLabel.attributedText. - 64;
         
+        _curEditModel.topMarginContent = self.contentLabel.top - self.titleLabel.bottom;
+        _curEditModel.leftMarginContent = self.contentLabel.left;
+        _curEditModel.rightMarginContent = self.view.width - self.contentLabel.right;
+        _curEditModel.bottomMarginContent = self.view.height - self.contentLabel.bottom;
+
+        _curEditModel.titleColorContent = self.contentLabel.textColor;
+        _curEditModel.titleFontSizeContent = self.contentLabel.font.pointSize;
+        
+        _curEditModel.bgColor = self.view.backgroundColor;
+
     }
     
     _formatEditVC.editModel = _curEditModel;
+    
+    [self.view bringSubviewToFront:_editContainerView];
     
     [UIView animateWithDuration:0.2 animations:^{
         
@@ -115,24 +129,21 @@
     } completion:^(BOOL finished) {
         
     }];
-    
 }
 
 - (void)editCompleteClick:(UIButton *)sender {
     
     [UIView animateWithDuration:0.2 animations:^{
         
-        
         _editContainerView.top = self.view.bottom;
         
     } completion:^(BOOL finished) {
         
     }];
-    
 }
 
 
-- (void)titleSliderAction:(UISlider *)sender {
+/*- (void)titleSliderAction:(UISlider *)sender {
     
     CGFloat font = 14 * (1 + sender.value);
     
@@ -151,16 +162,21 @@
 //    .size
     self.titleLabel.width = self.view.width - 40;
     self.titleLabel.height = titleSize.height;
-}
+}*/
 
 #pragma mark - private methos
+- (void)setupTitleContentFrame {
+    
+    [self.titleLabel sizeToFit];
+    [self.contentLabel sizeToFit];
+    
+}
+
 - (void)resetTitleFrame:(ZZFormatEditModel *)model {
     
-    _curEditModel = model;
     
     self.titleLabel.font = [UIFont systemFontOfSize:model.titleFontSize];
     self.titleLabel.textColor = model.titleColor;
-
     
     self.titleLabel.top = 64 + model.topMargin;
     self.titleLabel.left = model.leftMargin;
@@ -168,31 +184,62 @@
 
     self.titleLabel.width = self.view.width - model.rightMargin - model.leftMargin;
     
-    NSMutableAttributedString * attributedString1 = [[NSMutableAttributedString alloc] initWithString:self.titleLabel.text];
-    NSMutableParagraphStyle * paragraphStyle1 = [[NSMutableParagraphStyle alloc] init];
-    [paragraphStyle1 setLineSpacing:model.lineMargin];
-    [attributedString1 addAttribute:NSParagraphStyleAttributeName value:paragraphStyle1 range:NSMakeRange(0, [self.titleLabel.text length])];
     
+    NSMutableParagraphStyle * paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    [paragraphStyle setLineBreakMode:NSLineBreakByWordWrapping];
+    [paragraphStyle setLineSpacing:model.lineMargin];
     
-    [attributedString1 addAttribute:NSFontAttributeName value:self.titleLabel.font range:NSMakeRange(0, [self.titleLabel.text length])];
-    
-    
-    
-    CGRect titleRect = [attributedString1 boundingRectWithSize:CGSizeMake(self.titleLabel.width, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin context:nil];
-    
-    
-    
-    [self.titleLabel setAttributedText:attributedString1];
+    NSMutableAttributedString * attributedString = [[NSMutableAttributedString alloc] initWithString:self.titleLabel.text];
+    [attributedString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [self.titleLabel.text length])];
+    [attributedString addAttribute:NSFontAttributeName value:self.titleLabel.font range:NSMakeRange(0, [self.titleLabel.text length])];
+    [self.titleLabel setAttributedText:attributedString];
 
-//    CGRect titleRect = [self.titleLabel.attributedText boundingRectWithSize:CGSizeMake(self.titleLabel.width, MAXFLOAT)
-//                                                          options:NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading
-//                                                       attributes:@{NSFontAttributeName:self.titleLabel.font}
-//                                                          context:nil];
+    
+    CGRect titleRect = [attributedString boundingRectWithSize:CGSizeMake(self.titleLabel.width, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin context:nil];
     CGSize titleSize = titleRect.size;
+    self.titleLabel.height = titleSize.height;
+    
+}
+
+- (void)resetContentFrame:(ZZFormatEditModel *)model {
+    
+    self.contentLabel.font = [UIFont systemFontOfSize:model.titleFontSizeContent];
+    self.contentLabel.textColor = model.titleColorContent;
+    
 
     
-    self.titleLabel.height = titleSize.height;
-    NSLog(@"%f", [NSParagraphStyle defaultParagraphStyle].lineSpacing);
+    self.contentLabel.top = self.titleLabel.bottom + model.topMarginContent;
+    self.contentLabel.left = model.leftMarginContent;
+    self.contentLabel.right = self.view.width - model.rightMarginContent;
+//    self.contentLabel.bottom = self.view.bottom - model.bottomMarginContent;
+    
+    
+
+    self.contentLabel.width = self.view.width - model.rightMarginContent - model.leftMarginContent;
+    
+    
+    NSMutableParagraphStyle * paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    [paragraphStyle setLineBreakMode:NSLineBreakByWordWrapping];
+    [paragraphStyle setLineSpacing:model.lineMarginContent];
+//    [paragraphStyle setAlignment:NSTextAlignmentLeft];
+
+    NSMutableAttributedString * attributedString = [[NSMutableAttributedString alloc] initWithString:self.contentLabel.text];
+    [attributedString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [self.contentLabel.text length])];
+    [attributedString addAttribute:NSFontAttributeName value:self.contentLabel.font range:NSMakeRange(0, [self.contentLabel.text length])];
+    [self.contentLabel setAttributedText:attributedString];
+    
+    
+    CGRect titleRect = [attributedString boundingRectWithSize:CGSizeMake(self.contentLabel.width, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin context:nil];
+    CGSize titleSize = titleRect.size;
+    
+    CGFloat height1 = self.view.height - model.bottomMarginContent - self.contentLabel.top;
+    
+    CGFloat height = height1 < titleSize.height ? height1 : titleSize.height;
+    
+
+    self.contentLabel.height = height;
+
+    
 }
 
 #pragma mark - setters & getters
@@ -202,8 +249,8 @@
         
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.width - 20 * 2, 100)];
         
-        label.layer.borderColor = [UIColor blueColor].CGColor;
-        label.layer.borderWidth = 1.0;
+//        label.layer.borderColor = [UIColor blueColor].CGColor;
+//        label.layer.borderWidth = 1.0;
         
         label.font = [UIFont systemFontOfSize:14];
         label.numberOfLines = 0;
@@ -213,11 +260,7 @@
         _titleLabel = label;
         
     }
-    
-    
-    
     return _titleLabel;
-    
 }
 
 - (UILabel *)contentLabel {
@@ -225,8 +268,8 @@
     if (!_contentLabel) {
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.width - 20 * 2, 100)];
         
-                label.layer.borderColor = [UIColor redColor].CGColor;
-                label.layer.borderWidth = 1.0;
+//        label.layer.borderColor = [UIColor redColor].CGColor;
+//        label.layer.borderWidth = 1.0;
         
         label.font = [UIFont systemFontOfSize:14];
         label.numberOfLines = 0;
