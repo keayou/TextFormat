@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Main View Controller-->
+        <!--Text Format-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ZZMainViewController" sceneMemberID="viewController">
@@ -21,33 +21,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rtC-hO-jaG">
-                                <rect key="frame" x="20" y="72" width="117" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rtC-hO-jaG">
+                                <rect key="frame" x="20" y="72" width="33.5" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="0.38431372549999998" green="0.70196078429999997" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="第一章 北灵院" translatesAutoresizingMaskIntoConstraints="NO" id="WXZ-Gk-OBH">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="第一章 北灵院" translatesAutoresizingMaskIntoConstraints="NO" id="WXZ-Gk-OBH">
                                 <rect key="frame" x="20" y="100" width="335" height="88"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="88" id="fw2-P8-BvS"/>
+                                </constraints>
                                 <color key="textColor" red="0.090008376261086487" green="0.55929349804148631" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="22"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Content" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ciw-V5-gbk">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Content" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ciw-V5-gbk">
                                 <rect key="frame" x="20" y="202" width="62" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="TYn-Hi-uPT">
-                                <rect key="frame" x="20" y="231" width="335" height="436"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="TYn-Hi-uPT">
+                                <rect key="frame" x="20" y="231" width="335" height="416"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <mutableString key="text">    烈日如炎，灼热的阳光从天空上倾洒下来，令得整片大地都是处于一片蒸腾之中，杨柳微垂，收敛着枝叶，恹恹不振。
+                                <string key="text">    烈日如炎，灼热的阳光从天空上倾洒下来，令得整片大地都是处于一片蒸腾之中，杨柳微垂，收敛着枝叶，恹恹不振。
 
     在那一片投射着被柳树枝叶切割而开的明亮光斑的空地中，数百道身影静静盘坐，这是一群略显青涩的少年少女，而此时，他们都是面目认真的微闭着双目，鼻息间的呼吸，呈现一种极有节奏之感，而随着呼吸的吐纳，他们的周身，仿佛是有着肉眼难辨的细微光芒出现。
 
@@ -91,15 +90,28 @@
 
     周围的少年少女也是哄笑出声，气氛热闹。
 
-    “你也知道你爹凶狠，三月之内，你若再无法晋入灵动境，你就等着挨揍吧。”那被称为牧尘的少年摇了摇头，没好气的道。</mutableString>
-                                <color key="textColor" red="0.30545658191476677" green="0.0067716027742729112" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+    “你也知道你爹凶狠，三月之内，你若再无法晋入灵动境，你就等着挨揍吧。”那被称为牧尘的少年摇了摇头，没好气的道。</string>
+                                <color key="textColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="TYn-Hi-uPT" secondAttribute="trailing" constant="20" id="6eJ-Fn-1mv"/>
+                            <constraint firstItem="TYn-Hi-uPT" firstAttribute="top" secondItem="Ciw-V5-gbk" secondAttribute="bottom" constant="8" id="Ewg-Fo-6Qs"/>
+                            <constraint firstItem="Ciw-V5-gbk" firstAttribute="leading" secondItem="WXZ-Gk-OBH" secondAttribute="leading" id="NE5-tG-p8J"/>
+                            <constraint firstItem="WXZ-Gk-OBH" firstAttribute="top" secondItem="rtC-hO-jaG" secondAttribute="bottom" constant="7" id="VCa-R9-whN"/>
+                            <constraint firstItem="Ciw-V5-gbk" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="202" id="VvU-Eb-y5Z"/>
+                            <constraint firstItem="WXZ-Gk-OBH" firstAttribute="trailing" secondItem="TYn-Hi-uPT" secondAttribute="trailing" id="WSI-VT-AmD"/>
+                            <constraint firstItem="Ciw-V5-gbk" firstAttribute="leading" secondItem="rtC-hO-jaG" secondAttribute="leading" id="auc-JX-cmi"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="TYn-Hi-uPT" secondAttribute="bottom" constant="20" id="ca0-1g-NML"/>
+                            <constraint firstItem="TYn-Hi-uPT" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="iGR-tY-pin"/>
+                            <constraint firstItem="Ciw-V5-gbk" firstAttribute="top" secondItem="WXZ-Gk-OBH" secondAttribute="bottom" constant="14" id="ijJ-5d-VVI"/>
+                            <constraint firstItem="Ciw-V5-gbk" firstAttribute="leading" secondItem="TYn-Hi-uPT" secondAttribute="leading" id="nzS-2t-Az9"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="gXW-aW-p6w">
+                    <navigationItem key="navigationItem" title="Text Format" id="gXW-aW-p6w">
                         <barButtonItem key="rightBarButtonItem" title="下一步" id="UE8-7q-jrL"/>
                     </navigationItem>
                     <connections>

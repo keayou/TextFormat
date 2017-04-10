@@ -61,6 +61,10 @@
     _contentChooseTextColorBtn.layer.cornerRadius = 5.0;
     _contentChooseTextColorBtn.layer.borderColor = [UIColor whiteColor].CGColor;
     _contentChooseTextColorBtn.layer.borderWidth = MIN_Scale;
+    
+    _backgroundColorSelectBtn.layer.cornerRadius = 5.0;
+    _backgroundColorSelectBtn.layer.borderColor = [UIColor whiteColor].CGColor;
+    _backgroundColorSelectBtn.layer.borderWidth = MIN_Scale;
 }
 
 

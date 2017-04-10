@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		44FC414E1E9B685B0071E666 /* ZZFormartManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 44FC414D1E9B685B0071E666 /* ZZFormartManager.m */; };
 		E866F62C1E920E2100AA51D4 /* ZZFormatEditView.m in Sources */ = {isa = PBXBuildFile; fileRef = E866F62B1E920E2100AA51D4 /* ZZFormatEditView.m */; };
 		E866F62F1E92164D00AA51D4 /* ZZFormatEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E866F62E1E92164D00AA51D4 /* ZZFormatEditViewController.m */; };
 		E866F6341E92482500AA51D4 /* ZZFormatEditModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E866F6331E92482500AA51D4 /* ZZFormatEditModel.m */; };
@@ -22,6 +23,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		44FC414C1E9B685B0071E666 /* ZZFormartManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZFormartManager.h; sourceTree = "<group>"; };
+		44FC414D1E9B685B0071E666 /* ZZFormartManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZFormartManager.m; sourceTree = "<group>"; };
 		A7AB8F9A52B4B6FA43DCFE1C /* Pods-TextFormat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TextFormat.release.xcconfig"; path = "Pods/Target Support Files/Pods-TextFormat/Pods-TextFormat.release.xcconfig"; sourceTree = "<group>"; };
 		B9908A0569DABE516B67A492 /* libPods-TextFormat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TextFormat.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6F4665D463420A86D1F1194 /* Pods-TextFormat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TextFormat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TextFormat/Pods-TextFormat.debug.xcconfig"; sourceTree = "<group>"; };
@@ -149,6 +152,8 @@
 		E87505921E7D007200494182 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				44FC414C1E9B685B0071E666 /* ZZFormartManager.h */,
+				44FC414D1E9B685B0071E666 /* ZZFormartManager.m */,
 				E866F6321E92482500AA51D4 /* ZZFormatEditModel.h */,
 				E866F6331E92482500AA51D4 /* ZZFormatEditModel.m */,
 			);
@@ -311,6 +316,7 @@
 				E866F62C1E920E2100AA51D4 /* ZZFormatEditView.m in Sources */,
 				E87505761E7D000300494182 /* main.m in Sources */,
 				E87505961E7D009C00494182 /* ZZMainViewController.m in Sources */,
+				44FC414E1E9B685B0071E666 /* ZZFormartManager.m in Sources */,
 				E866F62F1E92164D00AA51D4 /* ZZFormatEditViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

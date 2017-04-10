@@ -26,6 +26,12 @@
     self.nextBtn.target = self;
     self.nextBtn.action = @selector(naviDoneClick:);
     
+    _titleTxtView.layer.borderColor = [UIColor blueColor].CGColor;
+    _titleTxtView.layer.borderWidth = MIN_Scale;
+    
+    
+    _contentTxtView.layer.borderColor = [UIColor blackColor].CGColor;
+    _contentTxtView.layer.borderWidth = MIN_Scale;
 }
 
 - (void)didReceiveMemoryWarning {

@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ZZFormatEditModel : NSObject
+@interface ZZFormatEditModel : NSObject<NSCoding>
 
 
 @property (nonatomic, assign) CGFloat topMargin;

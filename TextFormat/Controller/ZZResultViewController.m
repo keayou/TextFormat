@@ -10,6 +10,7 @@
 
 #import "ZZFormatEditView.h"
 #import "ZZFormatEditViewController.h"
+#import "ZZFormartManager.h"
 
 
 @interface ZZResultViewController ()
@@ -19,16 +20,15 @@
 @property (weak, nonatomic) UILabel *titleLabel;
 @property (weak, nonatomic) UILabel *contentLabel;
 
-@property (weak, nonatomic) IBOutlet UISlider *titleSlider;
 @property (weak, nonatomic) IBOutlet UIView *editContainerView;
 
-//@property (weak, nonatomic) IBOutlet ZZFormatEditView *editContainerView;
-//@property (weak, nonatomic) IBOutlet UIButton *editSureBtn;
 
 @property (strong, nonatomic) ZZFormatEditViewController *formatEditVC;
 @property (strong, nonatomic) ZZFormatEditModel *curEditModel;
 
 @end
+
+static BOOL isEditViewShowing = NO;
 
 @implementation ZZResultViewController
 - (void)awakeFromNib {
@@ -47,24 +47,27 @@
 
     _editContainerView.top = self.view.bottom;
 
-    
     self.editBtnNavigationBar.target = self;
     self.editBtnNavigationBar.action = @selector(showEditView:);
     
-    
-//    [self.titleSlider addTarget:self action:@selector(titleSliderAction:) forControlEvents:UIControlEventValueChanged];
-    
 
     self.titleLabel.text = _titleStr;
-//    [self titleSliderAction:nil];
-
-    
     self.contentLabel.text = _contentStr;
     
-    
-    [self setupTitleContentFrame];
+    ZZFormartManager *manager = [ZZFormartManager sharedInstance];
+    _curEditModel = [manager fetchCustomFormartInfo];
+    [self setupTitleContentFrameWithEditModel:_curEditModel];
 }
 
+- (void)viewDidDisappear:(BOOL)animated {
+    
+    [super viewDidDisappear:animated];
+    
+    ZZFormartManager *manager = [ZZFormartManager sharedInstance];
+    if (_curEditModel) {
+        [manager saveCustomFormartInfo:_curEditModel];
+    }
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -81,10 +84,7 @@
             
             weakSelf.curEditModel = editModel;
             
-            weakSelf.view.backgroundColor = editModel.bgColor;
-
-            [weakSelf resetTitleFrame:editModel];
-            [weakSelf resetContentFrame:editModel];
+            [weakSelf setupTitleContentFrameWithEditModel:editModel];
 
             [weakSelf editCompleteClick:nil];
         };
@@ -93,6 +93,10 @@
 
 #pragma mark - Event Response
 - (void)showEditView:(UIBarButtonItem *)sender {
+    
+    if (isEditViewShowing) {
+        return;
+    }
     
     if (!_curEditModel) {
         
@@ -127,7 +131,7 @@
         _editContainerView.bottom = self.view.bottom;
         
     } completion:^(BOOL finished) {
-        
+        isEditViewShowing = YES;
     }];
 }
 
@@ -138,39 +142,28 @@
         _editContainerView.top = self.view.bottom;
         
     } completion:^(BOOL finished) {
-        
+        isEditViewShowing = NO;
+
     }];
 }
 
 
-/*- (void)titleSliderAction:(UISlider *)sender {
-    
-    CGFloat font = 14 * (1 + sender.value);
-    
-    
-    self.titleLabel.font = [UIFont systemFontOfSize:font];
-    self.titleLabel.width = self.view.width - 40;
-
-    
-    CGRect titleRect = [self.titleLabel.text boundingRectWithSize:CGSizeMake(self.view.width - 40, MAXFLOAT)
-                                                           options:NSStringDrawingTruncatesLastVisibleLine |
-                                                                   NSStringDrawingUsesLineFragmentOrigin |
-                                                                   NSStringDrawingUsesFontLeading
-                                                        attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:font]}
-                                                           context:nil];
-    CGSize titleSize = titleRect.size;
-//    .size
-    self.titleLabel.width = self.view.width - 40;
-    self.titleLabel.height = titleSize.height;
-}*/
-
 #pragma mark - private methos
-- (void)setupTitleContentFrame {
+- (void)setupTitleContentFrameWithEditModel:(ZZFormatEditModel *)editModel {
     
-    [self.titleLabel sizeToFit];
-    [self.contentLabel sizeToFit];
-    
-    self.contentLabel.top = self.titleLabel.bottom + 20;
+    if (editModel) {
+        self.view.backgroundColor = editModel.bgColor;
+        
+        [self resetTitleFrame:editModel];
+        [self resetContentFrame:editModel];
+    } else {
+        
+        [self.titleLabel sizeToFit];
+        [self.contentLabel sizeToFit];
+        
+        self.contentLabel.top = self.titleLabel.bottom + 20;
+    }
+
 }
 
 - (void)resetTitleFrame:(ZZFormatEditModel *)model {
@@ -180,11 +173,10 @@
     self.titleLabel.textColor = model.titleColor;
     
     self.titleLabel.top = 64 + model.topMargin;
-    self.titleLabel.left = model.leftMargin;
     self.titleLabel.right = self.view.width - model.rightMargin;
+    self.titleLabel.left = model.leftMargin;
 
-    self.titleLabel.width = self.view.width - model.rightMargin - model.leftMargin;
-    
+    CGFloat maxWidth = self.view.width - model.rightMargin - model.leftMargin;
     
     NSMutableParagraphStyle * paragraphStyle = [[NSMutableParagraphStyle alloc] init];
     [paragraphStyle setLineBreakMode:NSLineBreakByWordWrapping];
@@ -196,9 +188,11 @@
     [self.titleLabel setAttributedText:attributedString];
 
     
-    CGRect titleRect = [attributedString boundingRectWithSize:CGSizeMake(self.titleLabel.width, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin context:nil];
+    CGRect titleRect = [attributedString boundingRectWithSize:CGSizeMake(maxWidth, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin context:nil];
     CGSize titleSize = titleRect.size;
     self.titleLabel.height = titleSize.height;
+    
+    self.titleLabel.width =  maxWidth;
     
 }
 
@@ -207,22 +201,17 @@
     self.contentLabel.font = [UIFont systemFontOfSize:model.titleFontSizeContent];
     self.contentLabel.textColor = model.titleColorContent;
     
-
     
     self.contentLabel.top = self.titleLabel.bottom + model.topMarginContent;
     self.contentLabel.left = model.leftMarginContent;
     self.contentLabel.right = self.view.width - model.rightMarginContent;
-//    self.contentLabel.bottom = self.view.bottom - model.bottomMarginContent;
     
-    
-
     self.contentLabel.width = self.view.width - model.rightMarginContent - model.leftMarginContent;
     
     
     NSMutableParagraphStyle * paragraphStyle = [[NSMutableParagraphStyle alloc] init];
     [paragraphStyle setLineBreakMode:NSLineBreakByWordWrapping];
     [paragraphStyle setLineSpacing:model.lineMarginContent];
-//    [paragraphStyle setAlignment:NSTextAlignmentLeft];
 
     NSMutableAttributedString * attributedString = [[NSMutableAttributedString alloc] initWithString:self.contentLabel.text];
     [attributedString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [self.contentLabel.text length])];
@@ -234,13 +223,10 @@
     CGSize titleSize = titleRect.size;
     
     CGFloat height1 = self.view.height - model.bottomMarginContent - self.contentLabel.top;
-    
     CGFloat height = height1 < titleSize.height ? height1 : titleSize.height;
     
-
     self.contentLabel.height = height;
 
-    
 }
 
 #pragma mark - setters & getters
