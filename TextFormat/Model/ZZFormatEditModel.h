@@ -18,6 +18,7 @@
 @property (nonatomic, strong) UIColor *titleColor;
 @property (nonatomic, assign) CGFloat titleFontSize;
 @property (nonatomic, assign) CGFloat lineMargin;
+//@property (nonatomic, copy)   NSString *titleColorStr;
 
 
 @property (nonatomic, assign) CGFloat topMarginContent;
@@ -27,8 +28,10 @@
 @property (nonatomic, strong) UIColor *titleColorContent;
 @property (nonatomic, assign) CGFloat titleFontSizeContent;
 @property (nonatomic, assign) CGFloat lineMarginContent;
+//@property (nonatomic, copy)   NSString *contentColorStr;
 
 @property (nonatomic, strong) UIColor *bgColor;
+//@property (nonatomic, copy)   NSString *bgColorStr;
 
 
 

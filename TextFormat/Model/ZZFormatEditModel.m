@@ -30,7 +30,7 @@
     self.titleColorContent      = [decoder decodeObjectForKey:@"titleColorContent"];
     self.titleFontSizeContent   = [decoder decodeFloatForKey:@"titleFontSizeContent"];
     self.lineMarginContent      = [decoder decodeFloatForKey:@"lineMarginContent"];
-    
+
     
     self.bgColor      = [decoder decodeObjectForKey:@"bgColor"];
     
@@ -46,7 +46,7 @@
     [encoder encodeObject:self.titleColor forKey:@"titleColor"];
     [encoder encodeFloat:self.titleFontSize forKey:@"titleFontSize"];
     [encoder encodeFloat:self.lineMargin forKey:@"lineMargin"];
-    
+
     
     
     [encoder encodeFloat:self.topMarginContent forKey:@"topMarginContent"];
@@ -56,10 +56,10 @@
     [encoder encodeObject:self.titleColorContent forKey:@"titleColorContent"];
     [encoder encodeFloat:self.titleFontSizeContent forKey:@"titleFontSizeContent"];
     [encoder encodeFloat:self.lineMarginContent forKey:@"lineMarginContent"];
-    
+
     
     [encoder encodeObject:self.bgColor forKey:@"bgColor"];
-    
+
 }
 
 @end

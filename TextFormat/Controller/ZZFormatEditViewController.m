@@ -8,6 +8,7 @@
 
 #import "ZZFormatEditViewController.h"
 #import <iOS-Color-Picker/FCColorPickerViewController.h>
+#import "NSString+ZZHexColor.h"
 
 
 
@@ -22,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *leftMarginTxtView;
 //@property (weak, nonatomic) IBOutlet UITextField *bottomMarginTxtView;
 @property (weak, nonatomic) IBOutlet UITextField *rightMarginTxtView;
+@property (weak, nonatomic) IBOutlet UILabel *titleColor;
 
 
 
@@ -34,9 +36,11 @@
 @property (weak, nonatomic) IBOutlet UITextField *contentleftMarginTxtView;
 @property (weak, nonatomic) IBOutlet UITextField *contentRightTxtView;
 @property (weak, nonatomic) IBOutlet UITextField *contentBottomTxtView;
+@property (weak, nonatomic) IBOutlet UILabel *contentColor;
 
 @property (weak, nonatomic) IBOutlet UIView *backSetupView;
 @property (weak, nonatomic) IBOutlet UIButton *backgroundColorSelectBtn;
+@property (weak, nonatomic) IBOutlet UILabel *backgroundColor;
 
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segControl;
@@ -103,12 +107,22 @@
     
     if (_segControl.selectedSegmentIndex == 0) {
         _chooseTextColorBtn.backgroundColor = color;
+        
+        _titleColor.text = [NSString hexFromUIColor:color];
+        _titleColor.textColor = color;
+
 
     } else if (_segControl.selectedSegmentIndex == 1) {
         _contentChooseTextColorBtn.backgroundColor = color;
+        
+        _contentColor.text = [NSString hexFromUIColor:color];
+        _contentColor.textColor = color;
 
     } else if (_segControl.selectedSegmentIndex == 2) {
         _backgroundColorSelectBtn.backgroundColor = color;
+        
+        _backgroundColor.text = [NSString hexFromUIColor:color];
+        _backgroundColor.textColor = color;
     }
     
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -133,7 +147,6 @@
     editModel.titleFontSize = [self.textFontSizeTxtView.text floatValue];
     editModel.lineMargin = [self.lineMarginTxtView.text floatValue];
     
-    
     editModel.topMarginContent = [self.contentTopMarginTxtView.text floatValue];
     editModel.leftMarginContent = [self.contentleftMarginTxtView.text floatValue];
     editModel.rightMarginContent = [self.contentRightTxtView.text floatValue];
@@ -141,9 +154,11 @@
     editModel.titleColorContent = self.contentChooseTextColorBtn.backgroundColor;
     editModel.titleFontSizeContent = [self.contentTextFontSizeTxtView.text floatValue];
     editModel.lineMarginContent = [self.contentLineMarginTxtView.text floatValue];
+
+    
     
     editModel.bgColor = self.backgroundColorSelectBtn.backgroundColor;
-    
+
     if (_editCompletedBlock) {
         _editCompletedBlock(editModel);
     }
@@ -179,7 +194,7 @@
         self.chooseTextColorBtn.backgroundColor = _editModel.titleColor;
         self.textFontSizeTxtView.text =  [NSString stringWithFormat:@"%d",(int)_editModel.titleFontSize];
         self.lineMarginTxtView.text =  [NSString stringWithFormat:@"%d",(int)_editModel.lineMargin];
-
+        self.titleColor.text = [NSString hexFromUIColor:_editModel.titleColor];
 
         
         self.contentTopMarginTxtView.text =  [NSString stringWithFormat:@"%.1f",_editModel.topMarginContent];
@@ -190,9 +205,12 @@
         self.contentChooseTextColorBtn.backgroundColor = _editModel.titleColorContent;
         self.contentTextFontSizeTxtView.text =  [NSString stringWithFormat:@"%d",(int)_editModel.titleFontSizeContent];
         self.contentLineMarginTxtView.text =  [NSString stringWithFormat:@"%d",(int)_editModel.lineMarginContent];
+        self.contentColor.text = [NSString hexFromUIColor:_editModel.titleColorContent];
+
+        
         
         self.backgroundColorSelectBtn.backgroundColor = _editModel.bgColor;
-
+        self.backgroundColor.text = [NSString hexFromUIColor:_editModel.bgColor];
     }
 }
 

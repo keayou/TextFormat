@@ -17,11 +17,15 @@
 
 @implementation AppDelegate
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
     [IQKeyboardManager sharedManager].enable = YES;
+    
+    [[UINavigationBar appearance] setBarTintColor:[UIColor whiteColor]];
+ 
+    [[UINavigationBar appearance] setTintColor:[UIColor blackColor]];
+
     
     return YES;
 }

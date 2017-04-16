@@ -11,6 +11,7 @@
 #import "ZZFormatEditView.h"
 #import "ZZFormatEditViewController.h"
 #import "ZZFormartManager.h"
+#import "NSString+ZZHexColor.h"
 
 
 @interface ZZResultViewController ()
@@ -67,6 +68,9 @@ static BOOL isEditViewShowing = NO;
     if (_curEditModel) {
         [manager saveCustomFormartInfo:_curEditModel];
     }
+    
+    isEditViewShowing = NO;
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -108,7 +112,7 @@ static BOOL isEditViewShowing = NO;
         
         _curEditModel.titleColor = self.titleLabel.textColor;
         _curEditModel.titleFontSize = self.titleLabel.font.pointSize;
-        
+
         
         _curEditModel.topMarginContent = self.contentLabel.top - self.titleLabel.bottom;
         _curEditModel.leftMarginContent = self.contentLabel.left;
@@ -117,6 +121,7 @@ static BOOL isEditViewShowing = NO;
 
         _curEditModel.titleColorContent = self.contentLabel.textColor;
         _curEditModel.titleFontSizeContent = self.contentLabel.font.pointSize;
+        
         
         _curEditModel.bgColor = self.view.backgroundColor;
 

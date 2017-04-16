@@ -11,6 +11,7 @@
 
 #import "UIViewAdditions.h"
 #import "ZZConstantsMacro.h"
+#import "UIColor+ColorWithHex.h"
 
 
 

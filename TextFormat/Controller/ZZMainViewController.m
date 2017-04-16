@@ -26,13 +26,21 @@
     self.nextBtn.target = self;
     self.nextBtn.action = @selector(naviDoneClick:);
     
-    _titleTxtView.layer.borderColor = [UIColor blueColor].CGColor;
-    _titleTxtView.layer.borderWidth = MIN_Scale;
+//    self.titleTxtView.layer.borderColor = [UIColor blueColor].CGColor;
+//    self.titleTxtView.layer.borderWidth = MIN_Scale;
+//    
+    [self setupTextViewWith:_contentTxtView placeholder:@"请输入正文"];
+
+    [self setupTextViewWith:_titleTxtView placeholder:@"请输入标题"];
     
-    
-    _contentTxtView.layer.borderColor = [UIColor blackColor].CGColor;
-    _contentTxtView.layer.borderWidth = MIN_Scale;
+
+//    self.contentTxtView.layer.borderColor = [UIColor blackColor].CGColor;
+//    self.contentTxtView.layer.borderWidth = MIN_Scale;
+
+        self.automaticallyAdjustsScrollViewInsets = NO;
 }
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -51,5 +59,48 @@
     [self.navigationController pushViewController:resultVC animated:YES];
     
 }
+
+- (void)setupTextViewWith:(UITextView *)txtView placeholder:(NSString *)placeholder
+{
+    // _placeholderLabel
+    UILabel *placeHolderLabel = [[UILabel alloc] init];
+    placeHolderLabel.text = placeholder;
+    placeHolderLabel.numberOfLines = 1;
+    placeHolderLabel.textColor = [UIColor colorWithHex:@"ded7d7"];
+    
+    // same font
+    placeHolderLabel.font = txtView.font;
+    [placeHolderLabel sizeToFit];
+    [txtView addSubview:placeHolderLabel];
+
+    [txtView setValue:placeHolderLabel forKey:@"_placeholderLabel"];
+};
+
+//
+//- (UITextView *)titleTxtView {
+//    
+//    if (!_titleTxtView) {
+//        UITextView *txtView = [[UITextView alloc] initWithFrame:CGRectMake(18, 64 + 23, ScreenWidth - 18 * 2, 400)];
+//        txtView.textColor = [UIColor colorWithHex:@"333333"];
+//        txtView.font = [UIFont systemFontOfSize:20];
+//        [self setupTextViewWith:txtView placeholder:@"请输入标题"];
+//        [self.view addSubview:txtView];
+//        _titleTxtView = txtView;
+//    }
+//    return _titleTxtView;
+//}
+//
+//- (UITextView *)contentTxtView {
+//    
+//    if (!_contentTxtView) {
+//        UITextView *txtView = [[UITextView alloc] initWithFrame:CGRectMake(18, CGRectGetMaxY(self.titleTxtView.frame) + 28, ScreenWidth - 18 * 2, ScreenHeight - CGRectGetMaxY(self.titleTxtView.frame) - 28 )];
+//        txtView.textColor = [UIColor colorWithHex:@"333333"];
+//        txtView.font = [UIFont systemFontOfSize:20];
+//        [self setupTextViewWith:txtView placeholder:@"请输入标题"];
+//        [self.view addSubview:txtView];
+//        _contentTxtView = txtView;
+//    }
+//    return _contentTxtView;
+//}
 
 @end
