@@ -9,7 +9,6 @@
 #import "ZZMainViewController.h"
 #import "ZZResultViewController.h"
 
-
 @interface ZZMainViewController ()
 @property (weak, nonatomic) IBOutlet UITextView *titleTxtView;
 @property (weak, nonatomic) IBOutlet UITextView *contentTxtView;
@@ -28,16 +27,16 @@
     
 //    self.titleTxtView.layer.borderColor = [UIColor blueColor].CGColor;
 //    self.titleTxtView.layer.borderWidth = MIN_Scale;
-//    
-    [self setupTextViewWith:_contentTxtView placeholder:@"请输入正文"];
-
     [self setupTextViewWith:_titleTxtView placeholder:@"请输入标题"];
-    
+    self.titleTxtView.contentInset = UIEdgeInsetsMake(-64, 0, 0, 0);
+
 
 //    self.contentTxtView.layer.borderColor = [UIColor blackColor].CGColor;
 //    self.contentTxtView.layer.borderWidth = MIN_Scale;
+    [self setupTextViewWith:_contentTxtView placeholder:@"请输入正文"];
 
-        self.automaticallyAdjustsScrollViewInsets = NO;
+    
+    
 }
 
 
@@ -46,7 +45,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 
 #pragma mark - Event Response
 - (void)naviDoneClick:(UIButton *)sender {

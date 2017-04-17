@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		442280671EA46B1C00921ACC /* UIImage+ColorImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 442280661EA46B1C00921ACC /* UIImage+ColorImage.m */; };
 		44FC414E1E9B685B0071E666 /* ZZFormartManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 44FC414D1E9B685B0071E666 /* ZZFormartManager.m */; };
 		E82FBE7D1EA38342000FC69F /* NSString+ZZHexColor.m in Sources */ = {isa = PBXBuildFile; fileRef = E82FBE7C1EA38342000FC69F /* NSString+ZZHexColor.m */; };
 		E82FBE801EA3BC4F000FC69F /* UITextView+ZZPlaceholder.m in Sources */ = {isa = PBXBuildFile; fileRef = E82FBE7F1EA3BC4F000FC69F /* UITextView+ZZPlaceholder.m */; };
@@ -26,6 +27,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		442280651EA46B1C00921ACC /* UIImage+ColorImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ColorImage.h"; sourceTree = "<group>"; };
+		442280661EA46B1C00921ACC /* UIImage+ColorImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ColorImage.m"; sourceTree = "<group>"; };
 		44FC414C1E9B685B0071E666 /* ZZFormartManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZFormartManager.h; sourceTree = "<group>"; };
 		44FC414D1E9B685B0071E666 /* ZZFormartManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZFormartManager.m; sourceTree = "<group>"; };
 		A7AB8F9A52B4B6FA43DCFE1C /* Pods-TextFormat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TextFormat.release.xcconfig"; path = "Pods/Target Support Files/Pods-TextFormat/Pods-TextFormat.release.xcconfig"; sourceTree = "<group>"; };
@@ -189,6 +192,8 @@
 				E82FBE7F1EA3BC4F000FC69F /* UITextView+ZZPlaceholder.m */,
 				E82FBE811EA3BE7F000FC69F /* UIColor+ColorWithHex.h */,
 				E82FBE821EA3BE7F000FC69F /* UIColor+ColorWithHex.m */,
+				442280651EA46B1C00921ACC /* UIImage+ColorImage.h */,
+				442280661EA46B1C00921ACC /* UIImage+ColorImage.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -329,6 +334,7 @@
 				E866F6341E92482500AA51D4 /* ZZFormatEditModel.m in Sources */,
 				E87505991E7D048500494182 /* ZZResultViewController.m in Sources */,
 				E866F62C1E920E2100AA51D4 /* ZZFormatEditView.m in Sources */,
+				442280671EA46B1C00921ACC /* UIImage+ColorImage.m in Sources */,
 				E87505761E7D000300494182 /* main.m in Sources */,
 				E82FBE801EA3BC4F000FC69F /* UITextView+ZZPlaceholder.m in Sources */,
 				E87505961E7D009C00494182 /* ZZMainViewController.m in Sources */,

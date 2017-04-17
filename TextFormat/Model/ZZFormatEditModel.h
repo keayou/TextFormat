@@ -12,9 +12,9 @@
 
 
 @property (nonatomic, assign) CGFloat topMargin;
-@property (nonatomic, assign) CGFloat leftMargin;
+//@property (nonatomic, assign) CGFloat leftMargin;
 @property (nonatomic, assign) CGFloat bottomMargin;
-@property (nonatomic, assign) CGFloat rightMargin;
+@property (nonatomic, assign) CGFloat edgeMargin;
 @property (nonatomic, strong) UIColor *titleColor;
 @property (nonatomic, assign) CGFloat titleFontSize;
 @property (nonatomic, assign) CGFloat lineMargin;
@@ -22,9 +22,9 @@
 
 
 @property (nonatomic, assign) CGFloat topMarginContent;
-@property (nonatomic, assign) CGFloat leftMarginContent;
+//@property (nonatomic, assign) CGFloat leftMarginContent;
 @property (nonatomic, assign) CGFloat bottomMarginContent;
-@property (nonatomic, assign) CGFloat rightMarginContent;
+@property (nonatomic, assign) CGFloat edgeMarginContent;
 @property (nonatomic, strong) UIColor *titleColorContent;
 @property (nonatomic, assign) CGFloat titleFontSizeContent;
 @property (nonatomic, assign) CGFloat lineMarginContent;

@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "IQKeyboardManager.h"
+#import "UIImage+ColorImage.h"
 
 
 
@@ -26,7 +27,9 @@
  
     [[UINavigationBar appearance] setTintColor:[UIColor blackColor]];
 
+    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageWithColor:[UIColor whiteColor]] forBarMetrics:UIBarMetricsDefault];
     
+    [[UINavigationBar appearance] setShadowImage:[UIImage imageWithColor:[UIColor colorWithHex:@"faf7f7"]]];
     return YES;
 }
 

@@ -58,6 +58,13 @@ static BOOL isEditViewShowing = NO;
     ZZFormartManager *manager = [ZZFormartManager sharedInstance];
     _curEditModel = [manager fetchCustomFormartInfo];
     [self setupTitleContentFrameWithEditModel:_curEditModel];
+    
+    
+    UIControl *sureMaskView = [[UIControl alloc]initWithFrame:self.view.frame];
+    sureMaskView.backgroundColor = [UIColor clearColor];
+    [sureMaskView addTarget:self action:@selector(editCompleteClick:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:sureMaskView];
+    
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -90,7 +97,7 @@ static BOOL isEditViewShowing = NO;
             
             [weakSelf setupTitleContentFrameWithEditModel:editModel];
 
-            [weakSelf editCompleteClick:nil];
+//            [weakSelf editCompleteClick:nil];
         };
     }
 }
@@ -107,16 +114,16 @@ static BOOL isEditViewShowing = NO;
         _curEditModel = [ZZFormatEditModel new];
         
         _curEditModel.topMargin = self.titleLabel.top - 64;
-        _curEditModel.leftMargin = self.titleLabel.left;
-        _curEditModel.rightMargin = self.view.width - self.titleLabel.right;
+        _curEditModel.edgeMargin = self.titleLabel.left;
+//        _curEditModel.rightMargin = self.view.width - self.titleLabel.right;
         
         _curEditModel.titleColor = self.titleLabel.textColor;
         _curEditModel.titleFontSize = self.titleLabel.font.pointSize;
 
         
         _curEditModel.topMarginContent = self.contentLabel.top - self.titleLabel.bottom;
-        _curEditModel.leftMarginContent = self.contentLabel.left;
-        _curEditModel.rightMarginContent = self.view.width - self.contentLabel.right;
+        _curEditModel.edgeMarginContent = self.contentLabel.left;
+//        _curEditModel.rightMarginContent = self.view.width - self.contentLabel.right;
         _curEditModel.bottomMarginContent = self.view.height - self.contentLabel.bottom;
 
         _curEditModel.titleColorContent = self.contentLabel.textColor;
@@ -141,6 +148,9 @@ static BOOL isEditViewShowing = NO;
 }
 
 - (void)editCompleteClick:(UIButton *)sender {
+    
+    [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
+
     
     [UIView animateWithDuration:0.2 animations:^{
         
@@ -178,10 +188,10 @@ static BOOL isEditViewShowing = NO;
     self.titleLabel.textColor = model.titleColor;
     
     self.titleLabel.top = 64 + model.topMargin;
-    self.titleLabel.right = self.view.width - model.rightMargin;
-    self.titleLabel.left = model.leftMargin;
+    self.titleLabel.right = self.view.width - model.edgeMargin;
+    self.titleLabel.left = model.edgeMargin;
 
-    CGFloat maxWidth = self.view.width - model.rightMargin - model.leftMargin;
+    CGFloat maxWidth = self.view.width - model.edgeMargin - model.edgeMargin;
     
     NSMutableParagraphStyle * paragraphStyle = [[NSMutableParagraphStyle alloc] init];
     [paragraphStyle setLineBreakMode:NSLineBreakByWordWrapping];
@@ -208,11 +218,12 @@ static BOOL isEditViewShowing = NO;
     
     
     self.contentLabel.top = self.titleLabel.bottom + model.topMarginContent;
-    self.contentLabel.left = model.leftMarginContent;
-    self.contentLabel.right = self.view.width - model.rightMarginContent;
+    self.contentLabel.left = model.edgeMarginContent;
+//    self.contentLabel.right = self.view.width - model.edgeMarginContent;
+
+    CGFloat maxWidth = self.view.width - model.edgeMarginContent - model.edgeMarginContent;
     
-    self.contentLabel.width = self.view.width - model.rightMarginContent - model.leftMarginContent;
-    
+    self.contentLabel.width = maxWidth;
     
     NSMutableParagraphStyle * paragraphStyle = [[NSMutableParagraphStyle alloc] init];
     [paragraphStyle setLineBreakMode:NSLineBreakByWordWrapping];
@@ -224,7 +235,7 @@ static BOOL isEditViewShowing = NO;
     [self.contentLabel setAttributedText:attributedString];
     
     
-    CGRect titleRect = [attributedString boundingRectWithSize:CGSizeMake(self.contentLabel.width, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin context:nil];
+    CGRect titleRect = [attributedString boundingRectWithSize:CGSizeMake(maxWidth, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin context:nil];
     CGSize titleSize = titleRect.size;
     
     CGFloat height1 = self.view.height - model.bottomMarginContent - self.contentLabel.top;
